@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salón de Eventos Martina</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&family=Playfair+Display:ital,wght@1,400;1,500;1,600&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #FEF6FB;
+            color: #5b0040;
+        }
+        .font-title {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        .font-cursive {
+            font-family: 'Playfair Display', serif;
+            font-style: italic;
+            font-weight: 400;
+        }
+        .hero-bg {
+            /* Asegúrate de que la ruta a tu imagen sea correcta */
+            background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('img/SALONPORFUERA.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+        .section-bg {
+            background-color: #ffc8f120;
+        }
+        .btn-primary {
+            --bg: #850a61;
+            --shadow-color: #5b0040;
+            --text-color: #fff;
+            position: relative;
+            border: none;
+            background: var(--bg);
+            color: var(--text-color);
+            padding: 0.8em 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            transition: 0.2s;
+            border-radius: 9999px;
+            opacity: 0.9;
+            letter-spacing: 1px;
+            box-shadow: var(--shadow-color) 0px 6px 2px, #000 0px 7px 5px;
+        }
+        .btn-primary:hover {
+            opacity: 1;
+        }
+        .btn-primary:active {
+            top: 4px;
+            box-shadow: var(--shadow-color) 0px 2px 2px, #000 0px 2px 5px;
+        }
+        .btn-secondary {
+            background-color: #850a61;
+            color: #ffffff;
+            transition: all 0.3s ease;
+        }
+        .btn-secondary:hover {
+             background-color: #7f005c;
+        }
+        .img-gallery {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .img-gallery:hover {
+            transform: scale(1.03);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+        .scroll-container {
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+        }
+        .scroll-container::-webkit-scrollbar {
+            display: none;
+        }
+        .scroll-item {
+            scroll-snap-align: center;
+        }
+    </style>
+</head>
+<body class="antialiased">
+
+    <header class="absolute top-0 left-0 right-0 z-10 p-6 md:p-4 bg-[#5b0040] shadow-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <div class="logo">
+                <a href="#">
+                    <img src="/icons/Logo-martina-blanco.png" alt="Logo Salón Martina" style="height:70px;">
+                </a>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 uppercase">
+                <a href="#servicios" class="text-[#FEF6FB] font-bold transform hover:text-[#850a61] transition">SERVICIOS</a>
+                <a href="#galeria" class="text-[#FEF6FB] font-bold hover:text-[#850a61] transition">GALERÍA</a>
+                <a href="#contacto" class="text-[#FEF6FB] font-bold hover:text-[#850a61] transition">CONTACTO</a>
+            </nav>
+            <a href="#contacto" class="hidden md:inline-block px-6 py-3 rounded-md btn-primary text-sm font-semibold">Reservar Fecha</a>
+            <button id="mobile-menu-button" class="md:hidden text-white text-2xl">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        <div id="mobile-menu" class="hidden md:hidden bg-black bg-opacity-80 absolute top-full right-0 left-0">
+            <a href="#servicios" class="block text-white text-center py-4">Servicios</a>
+            <a href="#galeria" class="block text-white text-center py-4">Galería</a>
+            <a href="#contacto" class="block text-white text-center py-4">Contacto</a>
+            <div class="p-4"><a href="#contacto" class="block px-6 py-3 rounded-md btn-primary text-sm font-semibold w-full text-center">Reservar Fecha</a></div>
+        </div>
+    </header>
+
+    <section class="hero-bg h-screen flex items-center justify-center text-white text-center">
+        <div class="container mx-auto px-4">
+            <h2 class="font-title text-4xl md:text-6xl lg:text-7xl">Salón de Eventos Martina</h2>
+            <p class="font-cursive text-3xl md:text-5xl lg:text-6xl mt-4 max-w-4xl mx-auto">
+                Un salón pensado para que cada detalle de tu evento brille y se convierta en parte de tu historia.
+            </p>
+        </div>
+    </section>
+
+    <section class="py-20 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="text-center md:text-left">
+                    <h3 class="font-title text-3xl md:text-4xl">NO SON SÓLO EVENTOS</h3>
+                    <p class="font-cursive text-4xl md:text-5xl mt-2">Es sobre crear momentos</p>
+                    <p class="mt-8 text-lg leading-relaxed max-w-lg mx-auto md:mx-0">
+                        Para nosotros, cada celebración es un lienzo en blanco. Un ritual de alegría, luz y emociones que diseñamos contigo, cuidando cada textura, cada sabor y cada melodía para construir un espacio donde te sientas plenamente tú.
+                    </p>
+                </div>
+                <div>
+                    <img src="/img/IMG_4108.jpg" alt="Interior del Salón de Eventos Martina" class="rounded-lg shadow-2xl w-full h-auto object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+<section id="servicios" class="py-20 md:py-32 section-bg">
+    <div class="container mx-auto px-4 md:px-6 text-center">
+        <h3 class="font-title text-3xl md:text-4xl">EXPERIENCIAS A MEDIDA</h3>
+        <p class="font-cursive text-4xl md:text-5xl mt-2">Nuestros Servicios</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mt-16">
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col h-full">
+                <h4 class="font-title text-lg md:text-xl text-center mb-2">Combo Base</h4>
+                <p class="mt-4 flex-1 text-justify">
+                    La base perfecta para tu celebración. Te damos un espacio impecable y todas las comodidades esenciales para que lo personalices a tu gusto. Y lo mejor de todo: de la limpieza, nos encargamos nosotros.
+                </p>
+                <ul class="mt-4 list-none space-y-3 flex-1">
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Salón principal climatizado.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Mesas y sillas para 150 personas.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Sector de cocina equipado con freezer.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Baños equipados y limpios.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Conexión WiFi para los invitados.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Personal de limpieza antes y después del evento.</span>
+                    </li>
+                </ul>
+                <p class="font-title text-xl md:text-2xl mt-auto pt-4 text-[#850a61] text-center">$50.000</p>
+                <button class="mt-6 btn-primary service-button w-full" data-service="Combo Base" data-price="$50.000">Elegir Servicio</button>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col h-full">
+                <h4 class="font-title text-lg md:text-xl text-center">Combo Infantil</h4>
+                <p class="mt-4 flex-1 text-justify">
+                    La solución completa para el cumpleaños de los más chicos. Horas de diversión asegurada en el inflable y el rincón perfecto para la foto de la torta. La fórmula para niños felices y padres relajados.
+                </p>
+                <ul class="mt-4 list-none space-y-3 flex-1">
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Todo lo incluido en el combo base.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Castillo Inflable.(2 horas + cada hora extra $1200)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Kit Candy Bar (5 mesitas + fondo circular).</span>
+                    </li>
+                </ul>
+                <p class="font-title text-xl md:text-2xl mt-auto pt-4 text-[#850a61] text-center">$65.000</p>
+                <button class="mt-6 btn-primary service-button w-full" data-service="Combo Infantil" data-price="$65.000">Elegir Servicio</button>
+            </div>
+            
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col h-full">
+                <h4 class="font-title text-lg md:text-xl text-center">Combo Familiar</h4>
+                <p class="mt-4 flex-1 text-justify">
+                    El clásico asado familiar, pero llevado a otro nivel. Te damos el quincho perfecto, con espacio para todos y buena música, sin apretarse en casa ni preocuparse por el clima. Ideal para aniversarios, bautismos, cumpleaños y esas juntadas que merecen ser inolvidables.
+                </p>
+                <ul class="mt-4 list-none space-y-3 flex-1">
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Todo lo incluido en el combo base.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Sector Parrilla Completo (parrilla, estacas, mesa exterior, bacha).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Parlantes para Música.</span>
+                    </li>
+                </ul>
+                <p class="font-title text-xl md:text-2xl mt-auto pt-4 text-[#850a61] text-center">$60.000</p>
+                <button class="mt-6 btn-primary service-button w-full" data-service="Combo Familiar" data-price="$60.000">Elegir Servicio</button>
+            </div>
+
+            <div class="bg-white p-6 md:p-8 rounded-lg shadow-lg flex flex-col h-full">
+                <h4 class="font-title text-lg md:text-xl text-center">Combo Completo</h4>
+                <p class="mt-4 flex-1 text-justify">
+                    La experiencia definitiva. La solución todo en uno para el festejo más completo y sin preocupaciones. Diversión para los chicos, comodidad para los grandes y todos los detalles cubiertos. Si querés todo, este es tu combo.
+                </p>
+                <ul class="mt-4 list-none space-y-3 flex-1">
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Todo lo incluido en el combo base.</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Castillo Inflable.(2 horas + cada hora extra $1200)</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Kit Candy Bar (5 mesitas + fondo circular).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Sector Parrilla Completo (parrilla, estacas, mesa exterior, bacha).</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="flex-shrink-0 w-6 h-6 text-[#850a61] mr-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" /></svg>
+                        <span class="text-justify block">Parlantes para Música.</span>
+                    </li>
+                </ul>
+                <p class="font-title text-xl md:text-2xl mt-auto pt-4 text-[#850a61] text-center">$80.000</p>
+                <button class="mt-6 btn-primary service-button w-full" data-service="Combo Completo" data-price="$80.000">Elegir Servicio</button>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+    <section id="galeria" class="py-20 md:py-32">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-title text-3xl md:text-4xl">INSPIRACIÓN VISUAL</h3>
+            <p class="font-cursive text-4xl md:text-5xl mt-2">Nuestra Galería</p>
+            <div class="columns-2 md:columns-3 gap-4 mt-16 space-y-4">
+                 <img src="/img/_MG_4308.jpg" alt="Patio de noche en Salón Martina" class="rounded-lg shadow-md img-gallery w-full">
+                 <img src="/img/IMG_4210.jpg" alt="Patio de día con inflable" class="rounded-lg shadow-md img-gallery w-full">
+                 <img src="/img/IMG_4164.jpg" alt="Parrilla del Salón Martina" class="rounded-lg shadow-md img-gallery w-full">
+                 <img src="/img/IMG_4112.jpg" alt="Exterior del Salón de Eventos Martina" class="rounded-lg shadow-md img-gallery w-full">
+                 <img src="/img/_MG_4310.jpg" alt="Gente en el patio del salón" class="rounded-lg shadow-md img-gallery w-full">
+                 <img src="/img/IMG_4108.jpg" alt="Interior del salón con mesas" class="rounded-lg shadow-md img-gallery w-full">
+            </div>
+        </div>
+    </section>
+
+    <!-- Moments Section (Vertical Images) -->
+    <section id="momentos" class="py-20 md:py-32 section-bg">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <h3 class="font-title text-3xl md:text-4xl">MOMENTOS DESTACADOS</h3>
+                <p class="font-cursive text-4xl md:text-5xl mt-2">Pequeños detalles, grandes recuerdos</p>
+            </div>
+            <div class="relative">
+                <!-- Botón Izquierda -->
+                <button id="scrollLeft" class="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#850a61] text-white rounded-full p-2 shadow-lg hover:bg-[#5b0040] transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <!-- Botón Derecha -->
+                <button id="scrollRight" class="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#850a61] text-white rounded-full p-2 shadow-lg hover:bg-[#5b0040] transition">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+                <div id="momentos-scroll" class="flex overflow-x-auto space-x-6 pb-4 scroll-container">
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/_MG_4145.jpg" alt="Mesas del salón" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4110.jpg" alt="Metegol y tatetí" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4140.jpg" alt="Mesas y sillas apiladas" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4141.jpg" alt="Baño de hombres" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4150.jpg" alt="Baño de mujeres" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4152.jpg" alt="Patio con pasto" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4159.jpg" alt="Parrilla y patio" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4167.jpg" alt="Fogón en el patio" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4170.jpg" alt="Inflable de Spiderman" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                    <div class="flex-none w-64 md:w-72 scroll-item">
+                        <img src="/img/verticals/IMG_4211.jpg" alt="Sillas y televisor" class="w-full h-full object-cover rounded-lg shadow-lg img-gallery">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            // Mostrar los botones solo en escritorio
+            function updateScrollButtons() {
+                const leftBtn = document.getElementById('scrollLeft');
+                const rightBtn = document.getElementById('scrollRight');
+                if(window.innerWidth >= 768) {
+                    leftBtn.style.display = 'flex';
+                    rightBtn.style.display = 'flex';
+                } else {
+                    leftBtn.style.display = 'none';
+                    rightBtn.style.display = 'none';
+                }
+            }
+            window.addEventListener('resize', updateScrollButtons);
+            window.addEventListener('DOMContentLoaded', updateScrollButtons);
+
+            // Scroll horizontal con botones
+            const scrollContainer = document.getElementById('momentos-scroll');
+            document.getElementById('scrollLeft').addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+            });
+            document.getElementById('scrollRight').addEventListener('click', () => {
+                scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+            });
+        </script>
+    </section>
+
+    <section id="contacto" class="py-20 md:py-32">
+        <div class="container mx-auto px-6">
+            <div class="text-center">
+                <h3 class="font-title text-3xl md:text-4xl">¿LISTO PARA CREAR ALGO ÚNICO?</h3>
+                <p class="font-cursive text-4xl md:text-5xl mt-2">Hablemos de tu evento</p>
+            </div>
+            <div class="max-w-4xl mx-auto mt-16 bg-white p-8 md:p-12 rounded-lg shadow-2xl">
+                <form id="contact-form">
+                    <div class="grid grid-cols-1 gap-6">
+                        <div>
+                            <label for="name" class="block text-sm font-medium">Tu Nombre</label>
+                            <input type="text" id="name" name="name" placeholder="Escribe tu nombre aquí..." class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#850a61] focus:border-[#850a61] p-3">
+                        </div>
+                    </div>
+                    <div class="mt-6">
+                        <label for="message" class="block text-sm font-medium">¿En qué podemos ayudarte?</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Ej: Me gustaría consultar por un cumpleaños para 50 personas en el mes de diciembre..." class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-[#850a61] focus:border-[#850a61] p-3"></textarea>
+                    </div>
+                    <div class="mt-8 text-center">
+                        <button type="button" id="whatsapp-button" class="px-10 py-4 rounded-md btn-primary font-semibold text-lg">Enviar por WhatsApp</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-[#5b0040] text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <p class="font-title text-2xl">Salón de Eventos Martina</p>
+            <p class="mt-4">Dirección del Salón, Castelli, Chaco</p>
+            <p>Teléfono / WhatsApp: +54 36644322333</p>
+            <div class="flex justify-center space-x-6 mt-6">
+                <a href="#" target="_blank" class="hover:opacity-75">Facebook</a>
+                <a href="https://wa.me/543644322333" target="_blank" class="hover:opacity-75">WhatsApp</a>
+            </div>
+            <p class="text-sm mt-8 opacity-60">&copy; 2025 Salón de Eventos Martina. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // --- Mobile Menu Toggle ---
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const navLinks = document.querySelectorAll('#mobile-menu a, header nav a');
+
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                if(mobileMenu.classList.contains('hidden') === false){
+                     mobileMenu.classList.add('hidden');
+                }
+            });
+        });
+
+        // --- Service Button to auto-fill contact form ---
+        const serviceButtons = document.querySelectorAll('.service-button');
+        const contactSection = document.getElementById('contacto');
+        const messageTextarea = document.getElementById('message');
+
+        serviceButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const service = button.dataset.service;
+                const price = button.dataset.price;
+                const prefilledMessage = `¡Hola! Me gustaría consultar por el "${service}" (precio: ${price}). ¿Podrían darme más detalles?`;
+                
+                messageTextarea.value = prefilledMessage;
+                contactSection.scrollIntoView({ behavior: 'smooth' });
+                messageTextarea.focus();
+            });
+        });
+
+        // --- WhatsApp Contact Form ---
+        const whatsappButton = document.getElementById('whatsapp-button');
+        whatsappButton.addEventListener('click', () => {
+            const phoneNumber = '543644322333';
+            const name = document.getElementById('name').value;
+            const message = document.getElementById('message').value;
+
+            if (name.trim() === '' || message.trim() === '') {
+                alert('Por favor, completa tu nombre y el mensaje antes de enviar.');
+                return;
+            }
+
+            const fullMessage = `¡Hola! Mi nombre es ${name}. ${message}`;
+            const encodedMessage = encodeURIComponent(fullMessage);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+</body>
+</html>
